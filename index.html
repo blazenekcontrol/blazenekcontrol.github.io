@@ -7,8 +7,25 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .control-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+  }
+  .gif-header {
+    max-width: 100%;
+    height: auto;
+  }
+  .separator-gif {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
   }
   .slider-container {
     margin-bottom: 20px;
@@ -20,81 +37,85 @@
 </head>
 <body>
 
-<h2>BLAZENEKCONTROL</h2>
+<div class="control-box">
+  <img src="https://i.ibb.co/djqRtGc/IMG-3476.gif" alt="BLAZENEKCONTROL" class="gif-header">
 
-<label for="main-toggle">Main Toggle: </label>
-<input type="checkbox" id="main-toggle" onchange="toggleMain(this)"><br><br>
+  <label for="main-toggle">Main Toggle: </label>
+  <input type="checkbox" id="main-toggle" onchange="toggleMain(this)"><br><br>
 
-<div id="controls" style="display: none;">
+  <div id="controls" style="display: none;">
+    <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
 
-  <div class="slider-container" id="polish-container">
-    <label for="polish-toggle">Polish: </label>
-    <input type="checkbox" id="polish-toggle" onchange="toggleSlider('polish')">
-    <input type="range" id="polish-slider" min="0" max="100" value="50" disabled>
-    <input type="number" id="polish-number" min="0" max="100" value="50" disabled onchange="syncValue('polish', this.value)">
+    <div class="slider-container" id="polish-container">
+      <label for="polish-toggle">Polish: </label>
+      <input type="checkbox" id="polish-toggle" onchange="toggleSlider('polish')">
+      <input type="range" id="polish-slider" min="0" max="100" value="50" disabled>
+      <input type="number" id="polish-number" min="0" max="100" value="50" disabled onchange="syncValue('polish', this.value)">
+    </div>
+
+    <div class="slider-container" id="mathematics-container">
+      <label for="mathematics-toggle">Mathematics: </label>
+      <input type="checkbox" id="mathematics-toggle" onchange="toggleSlider('mathematics')">
+      <input type="range" id="mathematics-slider" min="0" max="100" value="50" disabled>
+      <input type="number" id="mathematics-number" min="0" max="100" value="50" disabled onchange="syncValue('mathematics', this.value)">
+    </div>
+
+    <div class="slider-container" id="english-container">
+      <label for="english-toggle">English: </label>
+      <input type="checkbox" id="english-toggle" onchange="toggleSlider('english')">
+      <input type="range" id="english-slider" min="0" max="100" value="50" disabled>
+      <input type="number" id="english-number" min="0" max="100" value="50" disabled onchange="syncValue('english', this.value)">
+    </div>
+
+    <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
+
+    <div class="option">
+      <label for="happy">Happy: </label>
+      <input type="checkbox" id="happy">
+    </div>
+
+    <div class="option">
+      <label for="sad">Sad: </label>
+      <input type="checkbox" id="sad">
+    </div>
+
+    <div class="option">
+      <label for="cnrdhny">CNRDHNY: </label>
+      <input type="checkbox" id="cnrdhny">
+    </div>
+
+    <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
+
+    <div class="option">
+      <label for="sleep-mode">Sleep Mode: </label>
+      <input type="checkbox" id="sleep-mode">
+    </div>
+
+    <div class="option">
+      <label for="dstctnmd">DSTCTNMD: </label>
+      <input type="checkbox" id="dstctnmd">
+    </div>
   </div>
-
-  <div class="slider-container" id="mathematics-container">
-    <label for="mathematics-toggle">Mathematics: </label>
-    <input type="checkbox" id="mathematics-toggle" onchange="toggleSlider('mathematics')">
-    <input type="range" id="mathematics-slider" min="0" max="100" value="50" disabled>
-    <input type="number" id="mathematics-number" min="0" max="100" value="50" disabled onchange="syncValue('mathematics', this.value)">
-  </div>
-
-  <div class="slider-container" id="english-container">
-    <label for="english-toggle">English: </label>
-    <input type="checkbox" id="english-toggle" onchange="toggleSlider('english')">
-    <input type="range" id="english-slider" min="0" max="100" value="50" disabled>
-    <input type="number" id="english-number" min="0" max="100" value="50" disabled onchange="syncValue('english', this.value)">
-  </div>
-
-  <div class="option">
-    <label for="happy">HAPPY: </label>
-    <input type="checkbox" id="happy">
-  </div>
-
-  <div class="option">
-    <label for="sad">SAD: </label>
-    <input type="checkbox" id="sad">
-  </div>
-
-  <div class="option">
-    <label for="cnrdhny">HORNY: </label>
-    <input type="checkbox" id="cnrdhny">
-  </div>
-
-  <div class="option">
-    <label for="sleep-mode">Sleep Mode: </label>
-    <input type="checkbox" id="sleep-mode">
-  </div>
-
-  <div class="option">
-    <label for="dstctnmd">Destruction mode: </label>
-    <input type="checkbox" id="dstctnmd">
-  </div>
-
 </div>
 
 <script>
 function toggleMain(element) {
-  document.getElementById('controls').style.display = element.checked ? 'block' : 'none';
+  document
+.getElementById('controls').style.display = element.checked ? 'block' : 'none';
 }
-
 function toggleSlider(sliderId) {
-  const slider = document.getElementById(sliderId + '-slider');
-  const number = document.getElementById(sliderId + '-number');
-  const isChecked = document.getElementById(sliderId + '-toggle').checked;
-  slider.disabled = !isChecked;
-  number.disabled = !isChecked;
+const slider = document.getElementById(sliderId + '-slider');
+const number = document.getElementById(sliderId + '-number');
+const isChecked = document.getElementById(sliderId + '-toggle').checked;
+slider.disabled = !isChecked;
+number.disabled = !isChecked;
 }
-
 function syncValue(sliderId, value) {
-  const slider = document.getElementById(sliderId + '-slider');
-  const number = document.getElementById(sliderId + '-number');
-  slider.value = value;
-  number.value = value;
+const slider = document.getElementById(sliderId + '-slider');
+const number = document.getElementById(sliderId + '-number');
+slider.value = value;
+number.value = value;
 }
 </script>
-
 </body>
 </html>
