@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLAZENEKCONTROL</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+  }
+  .slider-container {
+    margin-bottom: 20px;
+  }
+  .option {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>BLAZENEKCONTROL</h2>
+
+<label for="main-toggle">Main Toggle: </label>
+<input type="checkbox" id="main-toggle" onchange="toggleMain(this)"><br><br>
+
+<div id="controls" style="display: none;">
+
+  <div class="slider-container" id="polish-container">
+    <label for="polish-toggle">Polish: </label>
+    <input type="checkbox" id="polish-toggle" onchange="toggleSlider('polish')">
+    <input type="range" id="polish-slider" min="0" max="100" value="50" disabled>
+    <input type="number" id="polish-number" min="0" max="100" value="50" disabled onchange="syncValue('polish', this.value)">
+  </div>
+
+  <div class="slider-container" id="mathematics-container">
+    <label for="mathematics-toggle">Mathematics: </label>
+    <input type="checkbox" id="mathematics-toggle" onchange="toggleSlider('mathematics')">
+    <input type="range" id="mathematics-slider" min="0" max="100" value="50" disabled>
+    <input type="number" id="mathematics-number" min="0" max="100" value="50" disabled onchange="syncValue('mathematics', this.value)">
+  </div>
+
+  <div class="slider-container" id="english-container">
+    <label for="english-toggle">English: </label>
+    <input type="checkbox" id="english-toggle" onchange="toggleSlider('english')">
+    <input type="range" id="english-slider" min="0" max="100" value="50" disabled>
+    <input type="number" id="english-number" min="0" max="100" value="50" disabled onchange="syncValue('english', this.value)">
+  </div>
+
+  <div class="option">
+    <label for="happy">HAPPY: </label>
+    <input type="checkbox" id="happy">
+  </div>
+
+  <div class="option">
+    <label for="sad">SAD: </label>
+    <input type="checkbox" id="sad">
+  </div>
+
+  <div class="option">
+    <label for="cnrdhny">HORNY: </label>
+    <input type="checkbox" id="cnrdhny">
+  </div>
+
+  <div class="option">
+    <label for="sleep-mode">Sleep Mode: </label>
+    <input type="checkbox" id="sleep-mode">
+  </div>
+
+  <div class="option">
+    <label for="dstctnmd">Destruction mode: </label>
+    <input type="checkbox" id="dstctnmd">
+  </div>
+
+</div>
+
+<script>
+function toggleMain(element) {
+  document.getElementById('controls').style.display = element.checked ? 'block' : 'none';
+}
+
+function toggleSlider(sliderId) {
+  const slider = document.getElementById(sliderId + '-slider');
+  const number = document.getElementById(sliderId + '-number');
+  const isChecked = document.getElementById(sliderId + '-toggle').checked;
+  slider.disabled = !isChecked;
+  number.disabled = !isChecked;
+}
+
+function syncValue(sliderId, value) {
+  const slider = document.getElementById(sliderId + '-slider');
+  const number = document.getElementById(sliderId + '-number');
+  slider.value = value;
+  number.value = value;
+}
+</script>
+
+</body>
+</html>
