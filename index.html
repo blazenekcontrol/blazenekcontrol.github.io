@@ -12,11 +12,15 @@
     align-items: center;
     height: 100vh;
     margin: 0;
+    background: url('https://i.ibb.co/V2qV3Tt/IMG-1038.gif') no-repeat center center fixed;
+    background-size: cover;
   }
   .control-box {
     border: 1px solid #ccc;
     padding: 20px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    border-radius: 8px; /* Rounded corners */
   }
   .gif-header, .separator-gif {
     max-width: 100%;
@@ -33,14 +37,13 @@
 <div class="control-box">
   <img src="https://i.ibb.co/djqRtGc/IMG-3476.gif" alt="BLAZENEKCONTROL" class="gif-header">
 
-  <label for="main-toggle">Main Toggle: </label>
+  <label for="main-toggle">turn blazenek on: </label>
   <input type="checkbox" id="main-toggle" onchange="toggleMain(this)"><br><br>
 
   <div id="controls" style="display: none;">
     <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
 
     <!-- Slider Containers -->
-    <!-- Polish -->
     <div class="slider-container" id="polish-container">
       <label for="polish-toggle">POLISH: </label>
       <input type="checkbox" id="polish-toggle" onchange="toggleSlider('polish')">
@@ -48,7 +51,6 @@
       <input type="number" id="polish-number" min="0" max="100" value="50" disabled onchange="syncValue('polish', this.value)">
     </div>
 
-    <!-- Mathematics -->
     <div class="slider-container" id="mathematics-container">
       <label for="mathematics-toggle">MATHEMATICS: </label>
       <input type="checkbox" id="mathematics-toggle" onchange="toggleSlider('mathematics')">
@@ -56,7 +58,6 @@
       <input type="number" id="mathematics-number" min="0" max="100" value="50" disabled onchange="syncValue('mathematics', this.value)">
     </div>
 
-    <!-- English -->
     <div class="slider-container" id="english-container">
       <label for="english-toggle">ENGLISH: </label>
       <input type="checkbox" id="english-toggle" onchange="toggleSlider('english')">
@@ -66,7 +67,6 @@
 
     <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
 
-    <!-- Options -->
     <div class="option">
       <label for="happy">HAPPY: </label>
       <input type="checkbox" id="happy">
@@ -103,13 +103,12 @@
 function toggleMain(element) {
   document.getElementById('controls').style.display = element.checked ? 'block' : 'none';
 
-  // Audio playback control
   const audio = document.getElementById('blazenek-audio');
   if (element.checked) {
     audio.play();
   } else {
     audio.pause();
-    audio.currentTime = 0; // Rewind the audio to the start
+    audio.currentTime = 0;
   }
 }
 
@@ -127,6 +126,17 @@ function syncValue(sliderId, value) {
   slider.value = value;
   number.value = value;
 }
+
+// Detect mobile and change font
+function applyMobileFont() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    document.body.style.fontFamily = "'𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃', cursive";
+  }
+}
+
+// Run on page load
+applyMobileFont();
 </script>
 </body>
 </html>
