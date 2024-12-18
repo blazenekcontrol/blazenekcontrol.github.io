@@ -15,6 +15,14 @@
     background: url('https://i.ibb.co/V2qV3Tt/IMG-1038.gif') no-repeat center center fixed;
     background-size: cover;
   }
+
+  /* Apply bold styling for mobile */
+  body.mobile-bold {
+    font-family: '𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃', cursive;
+    font-weight: bold; /* Attempt native bold */
+    text-shadow: 1px 1px 2px black; /* Simulate bold if unsupported */
+  }
+
   .control-box {
     border: 1px solid #ccc;
     padding: 20px;
@@ -22,11 +30,13 @@
     background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
     border-radius: 8px; /* Rounded corners */
   }
+
   .gif-header, .separator-gif {
     max-width: 100%;
     height: auto;
     margin: 20px 0;
   }
+
   .slider-container, .option {
     margin-bottom: 20px;
   }
@@ -127,11 +137,11 @@ function syncValue(sliderId, value) {
   number.value = value;
 }
 
-// Detect mobile and change font
+// Detect mobile and apply bold font
 function applyMobileFont() {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   if (isMobile) {
-    document.body.style.fontFamily = "'𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃', cursive";
+    document.body.classList.add('mobile-bold');
   }
 }
 
