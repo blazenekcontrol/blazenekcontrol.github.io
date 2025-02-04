@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLAZENEKCONTROL</title>
 <style>
   body {
     font-family: 'Comic Sans MS', 'Arial Black', cursive;
@@ -98,3 +104,112 @@
     border-width: 3px;
   }
 </style>
+</head>
+<body>
+
+<div class="control-box">
+  <img src="https://i.ibb.co/djqRtGc/IMG-3476.gif" alt="BLAZENEKCONTROL" class="gif-header">
+
+  <label for="main-toggle">turn blazenek on: </label>
+  <input type="checkbox" id="main-toggle" onchange="toggleMain(this)"><br><br>
+
+  <div id="controls" style="display: none;">
+    <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
+
+    <!-- Slider Containers -->
+    <div class="slider-container" id="polish-container">
+      <label for="polish-toggle">POLISH: </label>
+      <input type="checkbox" id="polish-toggle" onchange="toggleSlider('polish')">
+      <input type="range" id="polish-slider" min="0" max="100" value="50" disabled>
+      <input type="number" id="polish-number" min="0" max="100" value="50" disabled onchange="syncValue('polish', this.value)">
+    </div>
+
+    <div class="slider-container" id="mathematics-container">
+      <label for="mathematics-toggle">MATHEMATICS: </label>
+      <input type="checkbox" id="mathematics-toggle" onchange="toggleSlider('mathematics')">
+      <input type="range" id="mathematics-slider" min="0" max="100" value="50" disabled>
+      <input type="number" id="mathematics-number" min="0" max="100" value="50" disabled onchange="syncValue('mathematics', this.value)">
+    </div>
+
+    <div class="slider-container" id="english-container">
+      <label for="english-toggle">ENGLISH: </label>
+      <input type="checkbox" id="english-toggle" onchange="toggleSlider('english')">
+      <input type="range" id="english-slider" min="0" max="100" value="50" disabled>
+      <input type="number" id="english-number" min="0" max="100" value="50" disabled onchange="syncValue('english', this.value)">
+    </div>
+
+    <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
+
+    <div class="option">
+      <label for="happy">HAPPY: </label>
+      <input type="checkbox" id="happy">
+    </div>
+
+    <div class="option">
+      <label for="sad">SAD: </label>
+      <input type="checkbox" id="sad">
+    </div>
+
+    <div class="option">
+      <label for="cnrdhny">HORNY: </label>
+      <input type="checkbox" id="cnrdhny">
+    </div>
+
+    <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
+
+    <div class="option">
+      <label for="sleep-mode">SLEEP MODE: </label>
+      <input type="checkbox" id="sleep-mode">
+    </div>
+
+    <div class="option">
+      <label for="dstctnmd">DESTRUCTION MODE: </label>
+      <input type="checkbox" id="dstctnmd">
+    </div>
+  </div>
+
+  <!-- Audio element for playing the sound -->
+  <audio id="blazenek-audio" src="blazenek.mp3"></audio>
+</div>
+
+<script>
+function toggleMain(element) {
+  document.getElementById('controls').style.display = element.checked ? 'block' : 'none';
+
+  const audio = document.getElementById('blazenek-audio');
+  if (element.checked) {
+    audio.play();
+  } else {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+}
+
+function toggleSlider(sliderId) {
+  const slider = document.getElementById(sliderId + '-slider');
+  const number = document.getElementById(sliderId + '-number');
+  const isChecked = document.getElementById(sliderId + '-toggle').checked;
+  slider.disabled = !isChecked;
+  number.disabled = !isChecked;
+}
+
+function syncValue(sliderId, value) {
+  const slider = document.getElementById(sliderId + '-slider');
+  const number = document.getElementById(sliderId + '-number');
+  slider.value = value;
+  number.value = value;
+}
+
+// Detect mobile and apply bold font
+function applyMobileFont() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    document.body.classList.add('mobile-bold');
+  }
+}
+
+// Run on page load
+applyMobileFont();
+</script>
+</body>
+</html>
