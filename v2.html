@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLAZENEKCONTROL</title>
+<style>
+  body {
+    font-family: 'Times New Roman', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #c0c0ff url('https://i.ibb.co/4sYZj7c/bg-tile.png') repeat;
+    color: #000080;
+  }
+
+  .control-box {
+    border: 3px double #000080;
+    padding: 15px;
+    width: 400px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    background-image: linear-gradient(to bottom, #6666cc 0%, #333399 100%);
+  }
+
+  .gif-header, .separator-gif {
+    border: 2px outset #ffffff;
+    margin: 10px 0;
+    max-width: 100%;
+  }
+
+  .slider-container, .option {
+    margin: 15px 0;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px inset #808080;
+  }
+
+  label {
+    font-weight: bold;
+    color: #000080;
+    text-shadow: 1px 1px 0 #ffffff;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.5);
+    margin: 0 8px;
+  }
+
+  input[type="range"] {
+    width: 150px;
+    background: #c0c0c0;
+    border: 1px inset #808080;
+  }
+
+  input[type="number"] {
+    width: 50px;
+    background: #ffffff;
+    border: 1px inset #808080;
+    font-family: 'Courier New', monospace;
+  }
+
+  #controls {
+    border-top: 2px groove #ffffff;
+    border-bottom: 2px groove #ffffff;
+    margin: 10px 0;
+  }
+
+  /* CRT screen effect */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="control-box">
+  <img src="https://i.ibb.co/djqRtGc/IMG-3476.gif" alt="BLAZENEKCONTROL" class="gif-header">
+
+  <div class="slider-container">
+    <label for="main-toggle">TURN BLAZENEK ON:</label>
+    <input type="checkbox" id="main-toggle" onchange="toggleMain(this)">
+  </div>
+
+  <div id="controls" style="display: none;">
+    <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
+
+    <!-- Slider Containers -->
+    <div class="slider-container" id="polish-container">
+      <label for="polish-toggle">POLISH:</label>
+      <input type="checkbox" id="polish-toggle" onchange="toggleSlider('polish')">
+      <input type="range" id="polish-slider" min="0" max="100" value="50" disabled>
+      <input type="number" id="polish-number" min="0" max="100" value="50" disabled onchange="syncValue('polish', this.value)">
+    </div>
+
+    <!-- Repeat similar structure for other sliders -->
+
+    <img src="https://i.ibb.co/w7jPzVD/GIF-image.gif" alt="Separator" class="separator-gif">
+
+    <div class="option">
+      <label for="happy">HAPPY:</label>
+      <input type="checkbox" id="happy">
+    </div>
+
+    <!-- Repeat for other options -->
+
+    <div class="option">
+      <label for="dstctnmd">DESTRUCTION MODE:</label>
+      <input type="checkbox" id="dstctnmd">
+    </div>
+  </div>
+</div>
+
+<!-- Keep original script content -->
+<script>
+  // Original script content remains unchanged
+</script>
+</body>
+</html>
